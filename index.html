@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cyberpunk Red Character Sheet</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 2em;
+        font-family: "Share Tech Mono", monospace;
+        background-color: #f2efe4;
+        color: black;
+      }
+      h1 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 1em;
+      }
+      .sheet {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+      .field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.3em;
+        border-bottom: 1px solid #999;
+      }
+      .block {
+        border: 2px solid #333;
+        padding: 0.5em;
+        background: #fff;
+      }
+      .block h2 {
+        margin-top: 0;
+        font-size: 1em;
+        background: #c8102e;
+        color: #fff;
+        padding: 0.2em 0.5em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.4em;
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 0.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cyberpunk Red Character Sheet</h1>
+    <div class="sheet">
+      <div class="block">
+        <h2>Identity</h2>
+        <div class="field">
+          <label class="identity-label">Handle:</label
+          ><span class="identity-value"></span>
+        </div>
+        <div class="field">
+          <label class="identity-label">Role:</label
+          ><span class="identity-value"></span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Vitals</h2>
+        <div class="field">
+          <label class="vitals-label">HP:</label
+          ><span class="vitals-value"></span>
+        </div>
+        <div class="field">
+          <label class="vitals-label">HP Max:</label
+          ><span class="vitals-value"></span>
+        </div>
+        <div class="field">
+          <label class="vitals-label">Humanity:</label
+          ><span class="vitals-value"></span>
+        </div>
+        <div class="field">
+          <label class="vitals-label">Humanity Max:</label
+          ><span class="vitals-value"></span>
+        </div>
+        <div class="field">
+          <label class="vitals-label">LUCK:</label
+          ><span class="vitals-value"></span>
+        </div>
+        <div class="field">
+          <label class="vitals-label">LUCK Max:</label
+          ><span class="vitals-value"></span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Stats</h2>
+        <div class="stats-grid">
+          <div class="field">
+            <label>INT:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>REF:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>DEX:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>TECH:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>COOL:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>WILL:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>MOVE:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>BODY:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>EMP:</label><span class="stats-field"></span>
+          </div>
+          <div class="field">
+            <label>EMP Max:</label><span class="stats-field"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="block skills-block">
+        <h2>Skills</h2>
+        <div class="skills-grid" id="skills-grid"></div>
+      </div>
+    </div>
+    <script>
+      const testData = {
+        handle: "Stan",
+        role: "Netrunner",
+        stats: {
+          INT: 4,
+          REF: 4,
+          DEX: 4,
+          TECH: 4,
+          COOL: 4,
+          WILL: 4,
+          MOVE: 4,
+          BODY: 4,
+          EMP: 4,
+          EMPMAX: 4,
+        },
+        skills: {
+          Concentration: 4,
+          Perception: 4,
+          Tracking: 4,
+          "Conceal/Reveal Object": 4,
+          Lipreading: 4,
+          Athletics: 4,
+          Stealth: 4,
+          Contortionist: 4,
+          Dance: 4,
+          Endurance: 4,
+          "Resist Torture/Drugs": 4,
+          Diving: 4,
+          "Drive Land Vehicle": 4,
+          "Pilot Air Vehicle": 4,
+          "Pilot Sea Vehicle": 4,
+          Riding: 4,
+          Education: 4,
+          "Local Expert": 4,
+          Accounting: 4,
+          "Animal Handling": 4,
+          Bureaucracy: 4,
+          Business: 4,
+          Composition: 4,
+          Criminology: 4,
+          Cryptography: 4,
+          Deduction: 4,
+          Gamble: 4,
+          Language: 4,
+          "Library Search": 4,
+          Science: 4,
+          Tactics: 4,
+          "Wilderness Survival": 4,
+          Brawling: 4,
+          Evasion: 4,
+          "Melee Weapon": 4,
+          "Martial Arts": 4,
+          "Play Instrument": 4,
+          Acting: 4,
+          Marksmanship: 4,
+          Archery: 4,
+          Autofire: 4,
+          Handgun: 4,
+          "Heavy Weapons": 4,
+          "Shoulder Arms": 4,
+          Bribery: 4,
+          Conversation: 4,
+          "Human Perception": 4,
+          Interrogation: 4,
+          Persuasion: 4,
+          "Personal Grooming": 4,
+          Streetwise: 4,
+          Trading: 4,
+          "Wardrobe/Style": 4,
+          "Basic Tech": 4,
+          "Cyber Tech": 4,
+          "First Aid": 4,
+          "Air Vehicle Tech": 4,
+          Demolitions: 4,
+          "Electronics/Security Tech": 4,
+          Forgery: 4,
+          "Land Vehicle Tech": 4,
+          "Paint/Draw/Sculpt": 4,
+          Paramedic: 4,
+          "Photography And Film": 4,
+          Picklock: 4,
+          Pickpocket: 4,
+          "Sea Vehicle Tech": 4,
+          "Weapons Tech": 4,
+        },
+      };
+
+      function populateCharacter(data) {
+        // Identity
+        const identityFields = document.querySelectorAll(".identity-value");
+        const identityLabels = document.querySelectorAll(".identity-label");
+        identityLabels.forEach((label, i) => {
+          const key = label.textContent.replace(":", "").toLowerCase();
+          identityFields[i].textContent = data[key];
+        });
+
+        // Vitals
+        const vitals = [
+          "hp",
+          "hpMax",
+          "humanity",
+          "humanityMax",
+          "luck",
+          "luckMax",
+        ];
+        const vitalsFields = document.querySelectorAll(".vitals-value");
+        vitalsFields.forEach((span, i) => {
+          span.textContent = data[vitals[i]] ?? 0;
+        });
+
+        // Stats
+        const statKeys = [
+          "INT",
+          "REF",
+          "DEX",
+          "TECH",
+          "COOL",
+          "WILL",
+          "MOVE",
+          "BODY",
+          "EMP",
+          "EMPMAX",
+        ];
+        document.querySelectorAll(".stats-field").forEach((el, i) => {
+          el.textContent = data.stats[statKeys[i]] ?? 0;
+        });
+
+        // Skills
+        const skillsGrid = document.getElementById("skills-grid");
+        for (const [skill, val] of Object.entries(data.skills)) {
+          const div = document.createElement("div");
+          div.className = "field";
+          const label = document.createElement("label");
+          label.textContent = skill + ":";
+          const span = document.createElement("span");
+          span.textContent = val;
+          div.append(label, span);
+          skillsGrid.appendChild(div);
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        populateCharacter(testData);
+      });
+    </script>
+  </body>
+</html>

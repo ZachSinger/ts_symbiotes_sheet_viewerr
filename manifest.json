@@ -1,0 +1,42 @@
+{
+  "manifestVersion": 1,
+  "name": "Cyberpunk Sheet Viewer",
+  "summary": "A freshly generated symbiote",
+  "descriptionFilePath": "/README.md",
+  "version": "0.0.1",
+  "license": "MIT",
+  "about": {
+    "website": "https://www.example.com/Cyberpunk+Sheet+Viewer",
+    "authors": ["Stan"]
+  },
+  "kind": "webView",
+  "entryPoint": "/index.html",
+  "api": {
+    "version": "0.1",
+    "initTimeout": 10,
+    "subscriptions": {
+      "dice": {
+        "onRollResults": "handleRollResult"
+      },
+      "symbiote": {
+        "onVisibilityEvent": "logSymbioteEvent",
+        "onStateChangeEvent": "logSymbioteEvent"
+      }
+    },
+    "interop": {
+      "id": "97bf6cef-0980-409b-b203-7872d19b2d3e"
+    }
+  },
+  "environment": {
+    "capabilities": [
+      "playAudio"
+    ],
+    "extras": [
+      "diceFinder",
+      "icons",
+      "fonts",
+      "colorStyles"
+    ],
+    "webViewBackgroundColor": "#000"
+  }
+}
